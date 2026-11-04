@@ -1,34 +1,30 @@
-# Datasets and uploaded files
-/dataset/Training/
-/dataset/Testing/
-/backend/uploads/
-/uploads/
-
-# Generated model files
-/vit_model_saved/
-/models/*.h5
-/models/*.keras
-/models/*.pt
-/models/*.pth
-
-# Python environments and cache
-/venv/
-/.venv/
+# Python
 __pycache__/
-*.py[cod]
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
+*.pyc
+venv/
+.venv/
 
-# Local configuration and secrets
+# Model files
+*.pt
+*.pth
+*.h5
+*.safetensors
+optimizer.pt
+
+# Dataset
+dataset/
+datasets/
+data/
+
+# Python libraries
+site-packages/
+
+# Uploads
+uploads/
+static/uploads/
+
+# Environment
 .env
-.env.*
-!.env.example
 
-# Logs and temporary files
-*.log
-*.tmp
-
-# Operating-system files
-.DS_Store
-Thumbs.db
+# Jupyter
+.ipynb_checkpoints/
