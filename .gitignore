@@ -1,0 +1,8 @@
+dataset/Training/
+dataset/Testing/
+vit_model_saved/
+backend/uploads/
+venv/
+.venv/
+__pycache__/
+*.pyc

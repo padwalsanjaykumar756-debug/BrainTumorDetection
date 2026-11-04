@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Detection</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>🧠 Brain Tumor Detection</h1>
+
+        <!-- Upload Image -->
+        <input type="file" id="imageInput" accept="image/*">
+
+        <br><br>
+
+        <!-- Image Preview -->
+        <img id="preview" src="" width="250" alt="MRI Image">
+
+        <br><br>
+
+        <!-- Predict Button -->
+        <button id="predictBtn" onclick="predict()" disabled>
+            Predict
+        </button>
+
+        <br><br>
+
+        <!-- Prediction -->
+        <h2>Prediction</h2>
+        <h3 id="prediction"></h3>
+
+        <!-- Confidence -->
+        <h2>Confidence</h2>
+        <h3 id="confidence"></h3>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

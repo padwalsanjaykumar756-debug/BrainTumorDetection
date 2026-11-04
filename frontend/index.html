@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Brain Tumor AI Detection System using Vision Transformer"
+    >
+
+    <title>Brain Tumor AI Detection System</title>
+
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-- =====================================================
+         CHART.JS
+         Used for probability chart
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <!-- =====================================================
+         JSPDF
+         Used for PDF medical report
+    ====================================================== -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     MOBILE HEADER
+===================================================== -->
+
+<header class="mobile-header">
+
+    <button
+        id="menuBtn"
+        type="button"
+        aria-label="Open menu"
+    >
+        ☰
+    </button>
+
+    <h2>🧠 Brain Tumor AI</h2>
+
+</header>
+
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside
+    class="sidebar"
+    id="sidebar"
+>
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🧠
+        </div>
+
+        <div>
+
+            <h2>
+                Brain Tumor AI
+            </h2>
+
+            <small>
+                ViT Detection System
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="sidebar-menu">
+
+        <a
+            href="#dashboard"
+            class="nav-item active"
+        >
+            🏠
+            <span>Dashboard</span>
+        </a>
+
+
+        <a
+            href="#upload"
+            class="nav-item"
+        >
+            📤
+            <span>Upload MRI</span>
+        </a>
+
+
+        <a
+            href="#prediction-section"
+            class="nav-item"
+        >
+            🤖
+            <span>ViT Prediction</span>
+        </a>
+
+
+        <a
+            href="#analytics"
+            class="nav-item"
+        >
+            📊
+            <span>Analytics</span>
+        </a>
+
+
+        <a
+            href="#explainability"
+            class="nav-item"
+        >
+            🔥
+            <span>Explainable AI</span>
+        </a>
+
+
+        <a
+            href="#disease-info"
+            class="nav-item"
+        >
+            🩺
+            <span>Disease Information</span>
+        </a>
+
+
+        <a
+            href="#precautions"
+            class="nav-item"
+        >
+            ⚠️
+            <span>Precautions</span>
+        </a>
+
+
+        <a
+            href="#treatment"
+            class="nav-item"
+        >
+            💊
+            <span>Treatment</span>
+        </a>
+
+
+        <a
+            href="#voice"
+            class="nav-item"
+        >
+            🎤
+            <span>Voice Assistant</span>
+        </a>
+
+
+        <a
+            href="#report"
+            class="nav-item"
+        >
+            📄
+            <span>Medical Report</span>
+        </a>
+
+
+        <a
+            href="#history"
+            class="nav-item"
+        >
+            📜
+            <span>Prediction History</span>
+        </a>
+
+
+        <a
+            href="#settings"
+            class="nav-item"
+        >
+            ⚙️
+            <span>Settings</span>
+        </a>
+
+
+        <a
+            href="#about"
+            class="nav-item"
+        >
+            ℹ️
+            <span>About Project</span>
+        </a>
+
+    </nav>
+
+
+    <!-- SIDEBAR FOOTER -->
+
+    <div class="sidebar-footer">
+
+        <p>
+            AI Brain MRI
+        </p>
+
+        <small>
+            Educational / Research System
+        </small>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main-content">
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section
+    id="dashboard"
+    class="page-section"
+>
+
+    <div class="page-header">
+
+        <div>
+
+            <p class="section-label">
+                AI MEDICAL IMAGING
+            </p>
+
+            <h1>
+                Brain Tumor Detection System
+            </h1>
+
+            <p>
+                Explainable Vision Transformer based
+                multi-class brain MRI classification.
+            </p>
+
+        </div>
+
+
+        <div
+            class="status-badge"
+            id="backendStatus"
+        >
+
+            <span class="status-dot"></span>
+
+            Backend Connected
+
+        </div>
+
+    </div>
+
+
+
+    <!-- DASHBOARD CARDS -->
+
+    <div class="dashboard-cards">
+
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                🧠
+            </div>
+
+            <div>
+
+                <p>
+                    Total Scans
+                </p>
+
+                <h2 id="totalScans">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                ⚠️
+            </div>
+
+            <div>
+
+                <p>
+                    Tumor Cases
+                </p>
+
+                <h2 id="tumorCases">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                ✅
+            </div>
+
+            <div>
+
+                <p>
+                    No Tumor Cases
+                </p>
+
+                <h2 id="noTumorCases">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                🎯
+            </div>
+
+            <div>
+
+                <p>
+                    Model Accuracy
+                </p>
+
+                <h2>
+                    98.47%
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- INTRODUCTION -->
+
+    <div class="hero-card">
+
+        <div>
+
+            <span class="tag">
+                VISION TRANSFORMER
+            </span>
+
+            <h2>
+                AI-Powered Brain MRI Analysis
+            </h2>
+
+            <p>
+                Upload a brain MRI image and allow the
+                trained Vision Transformer model to classify
+                the image into one of four categories.
+            </p>
+
+            <a
+                href="#upload"
+                class="primary-btn"
+            >
+                📤 Start MRI Analysis
+            </a>
+
+        </div>
+
+
+        <div class="hero-image">
+
+            <img
+                src="assets/brain-tumor.jpg"
+                alt="Brain MRI illustration"
+                onerror="this.style.display='none';"
+            >
+
+            <div class="brain-placeholder">
+
+                🧠
+
+                <span>
+                    Brain MRI AI
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MRI UPLOAD
+===================================================== -->
+
+<section
+    id="upload"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <span>
+            📤
+        </span>
+
+        <div>
+
+            <h2>
+                MRI Image Upload
+            </h2>
+
+            <p>
+                Upload a brain MRI image for AI analysis.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="upload-grid">
+
+
+        <!-- UPLOAD -->
+
+        <div class="card upload-card">
+
+            <div class="upload-icon">
+                🖼️
+            </div>
+
+            <h3>
+                Select MRI Image
+            </h3>
+
+            <p>
+                Supported formats: JPG, JPEG, PNG
+            </p>
+
+
+            <label
+                for="imageInput"
+                class="upload-btn"
+            >
+                📁 Choose MRI Image
+            </label>
+
+
+            <input
+                type="file"
+                id="imageInput"
+                accept="image/png,image/jpeg,image/jpg"
+                hidden
+            >
+
+
+            <p
+                id="selectedFile"
+                class="file-name"
+            >
+                No image selected
+            </p>
+
+        </div>
+
+
+
+        <!-- PREVIEW -->
+
+        <div class="card preview-card">
+
+            <h3>
+                🖼️ MRI Preview
+            </h3>
+
+            <div class="image-preview-container">
+
+                <img
+                    id="preview"
+                    src=""
+                    alt="MRI Preview"
+                >
+
+                <div
+                    id="previewPlaceholder"
+                    class="preview-placeholder"
+                >
+
+                    🧠
+
+                    <span>
+                        MRI preview will appear here
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ANALYZE -->
+
+    <div class="predict-area">
+
+        <button
+            id="predictBtn"
+            class="primary-btn large-btn"
+            type="button"
+            disabled
+        >
+            🔍 Analyze MRI
+        </button>
+
+
+        <div
+            id="loadingMessage"
+            class="loading-message"
+            hidden
+        >
+
+            <span class="spinner"></span>
+
+            Vision Transformer is analyzing the MRI...
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PREDICTION
+===================================================== -->
+
+<section
+    id="prediction-section"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <span>
+            🤖
+        </span>
+
+        <div>
+
+            <h2>
+                Vision Transformer Prediction
+            </h2>
+
+            <p>
+                AI classification result from the uploaded MRI.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="prediction-grid">
+
+
+        <!-- RESULT -->
+
+        <div class="card prediction-result">
+
+            <p class="result-label">
+                PREDICTED CLASS
+            </p>
+
+            <h1 id="predictionText">
+                Waiting for MRI...
+            </h1>
+
+            <div class="confidence-box">
+
+                <span>
+                    Confidence
+                </span>
+
+                <strong id="confidenceText">
+                    --
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- STATUS -->
+
+        <div class="card">
+
+            <h3>
+                🔎 Analysis Status
+            </h3>
+
+            <div
+                id="analysisStatus"
+                class="analysis-status"
+            >
+                Waiting for image
+            </div>
+
+
+            <div class="result-details">
+
+                <p>
+                    <strong>Model:</strong>
+                    Vision Transformer
+                </p>
+
+                <p>
+                    <strong>Task:</strong>
+                    Multi-Class Classification
+                </p>
+
+                <p>
+                    <strong>Classes:</strong>
+                    Glioma / Meningioma /
+                    Pituitary / No Tumor
+                </p>
+
+                <p>
+                    <strong>Result Time:</strong>
+
+                    <span id="resultDateTime">
+                        --
+                    </span>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ANALYTICS
+===================================================== -->
+
+<section
+    id="analytics"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <span>
+            📊
+        </span>
+
+        <div>
+
+            <h2>
+                Prediction Analytics
+            </h2>
+
+            <p>
+                Probability distribution returned by the model.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="card chart-card">
+
+        <canvas id="myChart"></canvas>
+
+        <div
+            id="chartMessage"
+            class="chart-message"
+        >
+            Run a prediction to display probabilities.
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EXPLAINABLE AI
+===================================================== -->
+
+<section
+    id="explainability"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <span>
+            🔥
+        </span>
+
+        <div>
+
+            <h2>
+                Explainable AI
+            </h2>
+
+            <p>
+                Visual explanation of the model's decision.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="xai-grid">
+
+
+        <div class="card">
+
+            <h3>
+                🔥 Attention / Heatmap
+            </h3>
+
+            <p>
+                The highlighted regions provide a visual
+                explanation of the model's classification.
+            </p>
+
+
+            <div class="heatmap-container">
+
+                <img
+                    id="heatmapImage"
+                    src=""
+                    alt="Explainable AI Heatmap"
+                >
+
+
+                <div
+                    id="heatmapPlaceholder"
+                    class="heatmap-placeholder"
+                >
+
+                    🔥
+
+                    <span>
+                        Heatmap will appear after analysis
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h3>
+                🧠 AI Explanation
+            </h3>
+
+            <div
+                id="xaiExplanation"
+                class="explanation-box"
+            >
+
+                <p>
+                    Upload and analyze an MRI to generate
+                    an explanation.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DISEASE INFORMATION
+===================================================== -->
+
+<section
+    id="disease-info"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <span>
+            🩺
+        </span>
+
+        <div>
+
+            <h2>
+                Disease Information
+            </h2>
+
+            <p>
+                General educational information.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="disease-grid">
+
+
+        <article class="disease-card">
+
+            <div class="disease-icon">
+                🔴
+            </div>
+
+            <h3>
+                Glioma
+            </h3>
+
+            <p>
+                A group of tumors originating from
+                glial cells in the nervous system.
+            </p>
+
+        </article>
+
+
+
+        <article class="disease-card">
+
+            <div class="disease-icon">
+                🟡
+            </div>
+
+            <h3>
+                Meningioma
+            </h3>
+
+            <p>
+                A tumor that develops from the meninges
+                surrounding the brain and spinal cord.
+            </p>
+
+        </article>
+
+
+
+        <article class="disease-card">
+
+            <div class="disease-icon">
+                🟣
+            </div>
+
+            <h3>
+                Pituitary Tumor
+            </h3>
+
+            <p>
+                A growth occurring in or around
+                the pituitary gland.
+            </p>
+
+        </article>
+
+
+
+        <article class="disease-card">
+
+            <div class="disease-icon">
+                🟢
+            </div>
+
+            <h3>
+                No Tumor
+            </h3>
+
+            <p>
+                The model classifies the uploaded image
+                as belonging to the no-tumor category.
+            </p>
+
+        </article>
+
+    </div>
+
+
+
+    <div class="card medical-info-card">
+
+        <h3>
+            📋 Selected Result Information
+        </h3>
+
+        <h2 id="diseaseName">
+            Waiting for prediction
+        </h2>
+
+
+        <div id="diseaseDescription">
+
+            <p>
+                Disease information will appear after
+                the MRI prediction.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PRECAUTIONS
+===================================================== -->
+
+<section
+    id="precautions"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <span>
+            ⚠️
+        </span>
+
+        <div>
+
+            <h2>
+                Precautions
+            </h2>
+
+            <p>
+                Important safety information.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="card precaution-card">
+
+        <ul>
+
+            <li>
+                This system is for educational and
+                research purposes.
+            </li>
+
+            <li>
+                Do not use AI output as a medical diagnosis.
+            </li>
+
+            <li>
+                MRI results should be reviewed by qualified
+                healthcare professionals.
+            </li>
+
+            <li>
+                Do not make treatment decisions based only
+                on AI predictions.
+            </li>
+
+            <li>
+                Follow your healthcare professional's advice.
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TREATMENT
+===================================================== -->
+
+<section
+    id="treatment"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <span>
+            💊
+        </span>
+
+        <div>
+
+            <h2>
+                Treatment Information
+            </h2>
+
+            <p>
+                General educational information only.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="treatment-grid">
+
+
+        <div class="card">
+
+            <h3>
+                💊 Medication
+            </h3>
+
+            <p>
+                Depending on the diagnosis, doctors may
+                prescribe medicines to manage symptoms
+                or related conditions.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                ☢️ Radiation Therapy
+            </h3>
+
+            <p>
+                Radiation therapy may be considered for
+                certain types and stages of brain tumors.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                🏥 Surgery
+            </h3>
+
+            <p>
+                Surgery may be considered when medically
+                appropriate based on tumor type and location.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                🩺 Follow-up
+            </h3>
+
+            <p>
+                Follow-up imaging and clinical evaluation
+                may be required according to medical advice.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="medical-warning">
+
+        ⚠️ Treatment must always be decided by
+        qualified healthcare professionals.
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VOICE ASSISTANT
+===================================================== -->
+
+<section
+    id="voice"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <span>
+            🎤
+        </span>
+
+        <div>
+
+            <h2>
+                Voice Assistant
+            </h2>
+
+            <p>
+                Listen to the prediction result.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="card voice-card">
+
+        <div class="voice-icon">
+            🎤
+        </div>
+
+        <h3>
+            AI Prediction Voice
+        </h3>
+
+        <p>
+            The browser can read the prediction and
+            confidence score aloud.
+        </p>
+
+
+        <div class="button-group">
+
+            <button
+                id="speakBtn"
+                class="primary-btn"
+                type="button"
+            >
+                🔊 Speak Result
+            </button>
+
+
+            <button
+                id="stopVoiceBtn"
+                class="secondary-btn"
+                type="button"
+            >
+                ⏹ Stop
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MEDICAL REPORT
+===================================================== -->
+
+<section
+    id="report"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <span>
+            📄
+        </span>
+
+        <div>
+
+            <h2>
+                Medical Report
+            </h2>
+
+            <p>
+                Generate and download the latest
+                AI analysis as a PDF.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="report-preview card">
+
+
+        <div class="report-header">
+
+            <div>
+
+                <h2>
+                    🧠 Brain Tumor AI Report
+                </h2>
+
+                <p>
+                    MRI Classification Report
+                </p>
+
+            </div>
+
+
+            <div class="report-logo">
+                🧠
+            </div>
+
+        </div>
+
+
+        <hr>
+
+
+        <div class="report-information">
+
+            <p>
+                <strong>Report Date:</strong>
+
+                <span id="reportDate">
+                    --
+                </span>
+            </p>
+
+
+            <p>
+                <strong>Report Time:</strong>
+
+                <span id="reportTime">
+                    --
+                </span>
+            </p>
+
+
+            <p>
+                <strong>Prediction:</strong>
+
+                <span id="reportPrediction">
+                    No prediction
+                </span>
+            </p>
+
+
+            <p>
+                <strong>Confidence:</strong>
+
+                <span id="reportConfidence">
+                    --
+                </span>
+            </p>
+
+        </div>
+
+
+        <div class="report-note">
+
+            <strong>Important:</strong>
+
+            This report is generated by an educational
+            AI research application and should not be
+            considered a medical diagnosis.
+
+        </div>
+
+
+        <button
+            id="downloadReportBtn"
+            class="primary-btn report-btn"
+            type="button"
+        >
+            📄 Download PDF Report
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     HISTORY
+===================================================== -->
+
+<section
+    id="history"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <span>
+            📜
+        </span>
+
+        <div>
+
+            <h2>
+                Prediction History
+            </h2>
+
+            <p>
+                Previous predictions stored in this browser.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div id="historyList">
+
+            <div class="empty-history">
+
+                📜
+
+                <p>
+                    No prediction history available.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="clearHistoryBtn"
+            class="danger-btn"
+            type="button"
+        >
+            🗑 Clear History
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SETTINGS
+===================================================== -->
+
+<section
+    id="settings"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <span>
+            ⚙️
+        </span>
+
+        <div>
+
+            <h2>
+                Settings
+            </h2>
+
+            <p>
+                Control application preferences.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="settings-list">
+
+
+        <!-- DARK MODE -->
+
+        <div class="setting-item">
+
+            <div>
+
+                <h3>
+                    🌙 Dark Mode
+                </h3>
+
+                <p>
+                    Switch between light and dark appearance.
+                </p>
+
+            </div>
+
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="darkModeToggle"
+                    checked
+                >
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+
+        <!-- VOICE -->
+
+        <div class="setting-item">
+
+            <div>
+
+                <h3>
+                    🎤 Voice Assistant
+                </h3>
+
+                <p>
+                    Automatically speak prediction results.
+                </p>
+
+            </div>
+
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="voiceToggle"
+                    checked
+                >
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+
+        <!-- NOTIFICATIONS -->
+
+        <div class="setting-item">
+
+            <div>
+
+                <h3>
+                    🔔 Notifications
+                </h3>
+
+                <p>
+                    Show prediction status notifications.
+                </p>
+
+            </div>
+
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="notificationToggle"
+                    checked
+                >
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+
+        <!-- AUTO REPORT -->
+
+        <div class="setting-item">
+
+            <div>
+
+                <h3>
+                    📄 Auto Report
+                </h3>
+
+                <p>
+                    Update report information after prediction.
+                </p>
+
+            </div>
+
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="reportToggle"
+                    checked
+                >
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section
+    id="about"
+    class="page-section"
+>
+
+    <div class="section-heading">
+
+        <span>
+            ℹ️
+        </span>
+
+        <div>
+
+            <h2>
+                About Project
+            </h2>
+
+            <p>
+                Project information and technologies.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="card about-card">
+
+        <h2>
+            An Explainable Hybrid CNN-Vision Transformer
+            Framework for Multi-Class Brain Tumor Classification
+        </h2>
+
+
+        <p>
+            This project is an AI-based research application
+            designed to classify brain MRI images into
+            Glioma, Meningioma, Pituitary Tumor, and
+            No Tumor categories.
+        </p>
+
+
+        <h3>
+            🛠 Technologies
+        </h3>
+
+
+        <div class="technology-list">
+
+            <span>Python</span>
+
+            <span>Flask</span>
+
+            <span>PyTorch</span>
+
+            <span>Vision Transformer</span>
+
+            <span>HTML5</span>
+
+            <span>CSS3</span>
+
+            <span>JavaScript</span>
+
+            <span>Chart.js</span>
+
+            <span>jsPDF</span>
+
+        </div>
+
+
+        <h3>
+            🧠 Classification Classes
+        </h3>
+
+
+        <ul>
+
+            <li>
+                Glioma
+            </li>
+
+            <li>
+                Meningioma
+            </li>
+
+            <li>
+                Pituitary Tumor
+            </li>
+
+            <li>
+                No Tumor
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <p>
+        🧠 Brain Tumor AI Detection System
+    </p>
+
+    <p>
+        For educational and research purposes only.
+    </p>
+
+</footer>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
