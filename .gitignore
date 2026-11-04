@@ -1,8 +1,34 @@
-dataset/Training/
-dataset/Testing/
-vit_model_saved/
-backend/uploads/
-venv/
-.venv/
+# Datasets and uploaded files
+/dataset/Training/
+/dataset/Testing/
+/backend/uploads/
+/uploads/
+
+# Generated model files
+/vit_model_saved/
+/models/*.h5
+/models/*.keras
+/models/*.pt
+/models/*.pth
+
+# Python environments and cache
+/venv/
+/.venv/
 __pycache__/
-*.pyc
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Operating-system files
+.DS_Store
+Thumbs.db
