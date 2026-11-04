@@ -1,30 +1,86 @@
-# Python
-__pycache__/
-*.pyc
-venv/
-.venv/
 
+# =========================
+# Python files
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# =========================
+# Virtual environments
+# =========================
+.venv/
+venv/
+env/
+
+# =========================
 # Model files
+# =========================
 *.pt
 *.pth
 *.h5
+*.keras
 *.safetensors
-optimizer.pt
+*.onnx
+*.pb
+*.ckpt
+*.tflite
 
-# Dataset
+# Model training checkpoints
+vit_results/
+checkpoints/
+runs/
+
+# =========================
+# Large datasets
+# =========================
 dataset/
 datasets/
 data/
+*.zip
+*.rar
+*.7z
 
+# =========================
 # Python libraries
+# =========================
 site-packages/
 
+# =========================
 # Uploads
+# =========================
 uploads/
 static/uploads/
 
-# Environment
+# =========================
+# Environment and secrets
+# =========================
 .env
+.env.*
+!.env.example
 
-# Jupyter
+# =========================
+# IDE and editor
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# Jupyter Notebook
+# =========================
 .ipynb_checkpoints/
+
+# =========================
+# Logs and temporary files
+# =========================
+*.log
+*.tmp
+temp/
+tmp/
+
+# =========================
+# Operating system
+# =========================
+Thumbs.db
+.DS_Store
