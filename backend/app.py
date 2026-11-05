@@ -331,18 +331,19 @@ def file_too_large(error):
 # =========================================================
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
 
     print("\n" + "=" * 60)
     print("STARTING BRAIN TUMOR AI BACKEND")
     print("=" * 60)
-    print("Home:   http://127.0.0.1:5000/")
-    print("Health: http://127.0.0.1:5000/health")
-    print("Predict: http://127.0.0.1:5000/predict")
+    print(f"Home:   http://0.0.0.0:{port}/")
+    print(f"Health: http://0.0.0.0:{port}/health")
+    print(f"Predict: http://0.0.0.0:{port}/predict")
     print("=" * 60)
 
     app.run(
-        host="127.0.0.1",
-        port=5000,
+        host="0.0.0.0",
+        port=port,
         debug=False,
         threaded=True
     )
